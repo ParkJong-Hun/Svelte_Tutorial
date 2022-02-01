@@ -25,7 +25,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.svelte$/,
+				test: /\.(html|svelte)$/,
 				use: {
 					loader: 'svelte-loader',
 					options: {
@@ -33,7 +33,8 @@ module.exports = {
 							dev: !prod
 						},
 						emitCss: prod,
-						hotReload: !prod
+						hotReload: !prod,
+						preprocess: require('svelte-preprocess')({ /* options */})
 					}
 				}
 			},
@@ -57,9 +58,6 @@ module.exports = {
 	plugins: [
 		new MiniCssExtractPlugin({
 			filename: '[name].css'
-		}),
-		svelte({
-			preprocess: sveltePreprocess()
 		})
 	],
 	devtool: prod ? false : 'source-map',
