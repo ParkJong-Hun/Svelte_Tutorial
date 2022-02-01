@@ -4,6 +4,8 @@ const path = require('path');
 const mode = process.env.NODE_ENV || 'development';
 const prod = mode === 'production';
 
+const sveltePreprocess = require('svelte-preprocess');
+
 module.exports = {
 	entry: {
 		'build/bundle': ['./src/main.js']
@@ -55,6 +57,9 @@ module.exports = {
 	plugins: [
 		new MiniCssExtractPlugin({
 			filename: '[name].css'
+		}),
+		svelte({
+			preprocess: sveltePreprocess()
 		})
 	],
 	devtool: prod ? false : 'source-map',
