@@ -4,8 +4,6 @@ const path = require('path');
 const mode = process.env.NODE_ENV || 'development';
 const prod = mode === 'production';
 
-const sveltePreprocess = require('svelte-preprocess');
-
 module.exports = {
 	entry: {
 		'build/bundle': ['./src/main.js']
@@ -51,6 +49,15 @@ module.exports = {
 				resolve: {
 					fullySpecified: false
 				}
+			},
+			{
+				test: /\.s?css$/,
+				use: [
+					'style-loader',
+					'css-loader',
+					'postcss-loader',
+					'sass-loader'
+				]
 			}
 		]
 	},

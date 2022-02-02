@@ -17,6 +17,7 @@
 
 	h1 {
 		color: #ff3e00;
+		background-color: rgba(#000, 0.5);//SCSS에서만 사용할 수 있는 코드
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;
